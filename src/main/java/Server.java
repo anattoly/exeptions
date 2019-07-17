@@ -41,4 +41,8 @@ public class Server {
             throw new NullObjectExeption("!!!! Non Object !!!!");
         }
     }
+
+    private void execStackOverflow() {
+        execStackOverflow();
+    }
 }

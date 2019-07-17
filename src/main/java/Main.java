@@ -40,11 +40,11 @@ public class Main {
             System.out.println(e.getMessage());
         }
 
-        System.out.println("========== Enter anything ==========");
+        System.out.println("========== Check Object ==========");
         try {
-            Object obj = reader.readLine();
+            Object obj = null;
             server.objectIsNull(obj);
-        } catch (NullObjectExeption | IOException e) {
+        } catch (NullObjectExeption e) {
             System.out.println(e.getMessage());
         }
 
