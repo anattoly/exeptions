@@ -13,7 +13,6 @@ public class Main {
 
     public static void main(String[] args) {
 
-
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
         Server server = new Server();
@@ -21,32 +20,32 @@ public class Main {
         System.out.println("======= Check your word whether it is a palindrome =======");
         try {
             server.isPalindrome(reader.readLine());
-        } catch (IOException | NonPalindromeExeption e) {
-            e.getMessage();
+        } catch (NonPalindromeExeption | IOException e) {
+            System.out.println(e.getMessage());
         }
 
         System.out.println("====== Enter number from 1 to 100, please ======");
         try {
             Integer number = Integer.parseInt(reader.readLine());
             server.isOverHundred(number);
-        } catch (IOException | NumberOverHundredExeption e) {
-            e.getMessage();
+        } catch (NumberOverHundredExeption | NumberFormatException | IOException e) {
+            System.out.println(e.getMessage());
         }
 
         System.out.println("====== Now check your number is even ======");
         try {
             Integer number = Integer.parseInt(reader.readLine());
             server.isEven(number);
-        } catch (IOException | IllegalInputNotEvenNumberExeption e) {
-            e.getMessage();
+        } catch (IllegalInputNotEvenNumberExeption | NumberFormatException | IOException e) {
+            System.out.println(e.getMessage());
         }
 
-        System.out.println("==========Enter anything==========");
+        System.out.println("========== Enter anything ==========");
         try {
             Object obj = reader.readLine();
             server.objectIsNull(obj);
-        } catch (IOException | NullObjectExeption e) {
-            e.getMessage();
+        } catch (NullObjectExeption | IOException e) {
+            System.out.println(e.getMessage());
         }
 
 

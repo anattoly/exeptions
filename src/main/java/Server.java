@@ -36,9 +36,9 @@ public class Server {
 
     void objectIsNull(Object o) throws NullObjectExeption {
         if (Optional.ofNullable(o).isPresent()) {
-            System.out.println("Good. Object not null ");
+            System.out.println("***** Good. Object not null ******");
         } else {
-            throw new NullObjectExeption("Non Object");
+            throw new NullObjectExeption("!!!! Non Object !!!!");
         }
     }
 }
