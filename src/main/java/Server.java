@@ -1,6 +1,5 @@
 package main.java;
 
-
 import main.java.custom_exeption.IllegalInputNotEvenNumberExeption;
 import main.java.custom_exeption.NonPalindromeExeption;
 import main.java.custom_exeption.NullObjectExeption;
@@ -8,7 +7,7 @@ import main.java.custom_exeption.NumberOverHundredExeption;
 
 import java.util.Optional;
 
-public class Server {
+class Server {
 
     void isPalindrome(String s) throws NonPalindromeExeption {
         if (s.toLowerCase().equals(new StringBuilder(s).reverse().toString().toLowerCase())) {
@@ -42,7 +41,7 @@ public class Server {
         }
     }
 
-    private void execStackOverflow() {
+    void execStackOverflow() {
         execStackOverflow();
     }
 }

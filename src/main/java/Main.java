@@ -24,7 +24,7 @@ public class Main {
             System.out.println(e.getMessage());
         }
 
-        System.out.println("====== Enter number from 1 to 100, please ======");
+        System.out.println("\n====== Enter number from 1 to 100, please ======");
         try {
             Integer number = Integer.parseInt(reader.readLine());
             server.isOverHundred(number);
@@ -32,7 +32,7 @@ public class Main {
             System.out.println(e.getMessage());
         }
 
-        System.out.println("====== Now check your number is even ======");
+        System.out.println("\n====== Now check your number is even ======");
         try {
             Integer number = Integer.parseInt(reader.readLine());
             server.isEven(number);
@@ -40,7 +40,7 @@ public class Main {
             System.out.println(e.getMessage());
         }
 
-        System.out.println("========== Check Object ==========");
+        System.out.println("\n========== Check Object ==========");
         try {
             Object obj = null;
             server.objectIsNull(obj);
@@ -48,6 +48,16 @@ public class Main {
             System.out.println(e.getMessage());
         }
 
-
+        System.out.println("\n=== ATTENTION!!! The program will throw StackOverflow Exception. Want to continue? (y/n)===");
+        try {
+            String answer = reader.readLine();
+            if (answer.equals("y")) {
+                server.execStackOverflow();
+            } else {
+                System.out.println("***** You don't like to risk *****");
+            }
+        } catch (IOException e) {
+            e.getMessage();
+        }
     }
 }
