@@ -13,49 +13,39 @@ public class Main {
 
     public static void main(String[] args) {
 
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-
         Server server = new Server();
 
-        System.out.println("======= Check your word whether it is a palindrome =======");
-        try {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
+            System.out.println("======= Check your word whether it is a palindrome =======");
             server.isPalindrome(reader.readLine());
-        } catch (NonPalindromeExeption | IOException e) {
-            System.out.println(e.getMessage());
-        }
-
-        System.out.println("\n====== Enter number from 1 to 100, please ======");
-        try {
+            System.out.println("\n====== Enter number from 1 to 100, please ======");
             Integer number = Integer.parseInt(reader.readLine());
             server.isOverHundred(number);
-        } catch (NumberOverHundredExeption | NumberFormatException | IOException e) {
-            System.out.println(e.getMessage());
-        }
-
-        System.out.println("\n====== Now check your number is even ======");
-        try {
-            Integer number = Integer.parseInt(reader.readLine());
             server.isEven(number);
-        } catch (IllegalInputNotEvenNumberExeption | NumberFormatException | IOException e) {
-            System.out.println(e.getMessage());
-        }
-
-        System.out.println("\n========== Check Object ==========");
-        try {
-            Object obj = null;
-            server.objectIsNull(obj);
-        } catch (NullObjectExeption e) {
-            System.out.println(e.getMessage());
-        }
-
-        System.out.println("\n=== ATTENTION!!! The program will throw StackOverflow Exception. Want to continue? (y/n)===");
-        try {
-            String answer = reader.readLine();
-            if (answer.equals("y")) {
+            System.out.println("\n========== Do you want to check the object? Enter Y/N ==========");
+            String answerObject = reader.readLine();
+            if (answerObject.equalsIgnoreCase("y")) {
+                server.objectIsNull(server.randomObject());
+            } else {
+                System.out.println("*** You refused to check the object ***");
+            }
+            System.out.println("\n=== ATTENTION!!! The program will throw StackOverflow Exception. Want to continue? (Y/N)===");
+            String answerOverflow = reader.readLine();
+            if (answerOverflow.equalsIgnoreCase("y")) {
                 server.execStackOverflow();
             } else {
                 System.out.println("***** You don't like to risk *****");
             }
+        } catch (NonPalindromeExeption e) {
+            System.out.println("NonPalindromeExeption: " + e.getMessage());
+        } catch (NumberOverHundredExeption e) {
+            System.out.println("NumberOverHundredExeption: " + e.getMessage());
+        } catch (IllegalInputNotEvenNumberExeption e) {
+            System.out.println("IllegalInputNotEvenNumberExeption: " + e.getMessage());
+        } catch (NullObjectExeption e) {
+            System.out.println("NullObjectExeption: " + e.getMessage());
+        } catch (NumberFormatException e) {
+            System.out.println("NumberFormatException: " + e.getMessage());
         } catch (IOException e) {
             e.getMessage();
         }

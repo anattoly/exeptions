@@ -5,12 +5,15 @@ import main.java.custom_exeption.NonPalindromeExeption;
 import main.java.custom_exeption.NullObjectExeption;
 import main.java.custom_exeption.NumberOverHundredExeption;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 class Server {
 
     void isPalindrome(String s) throws NonPalindromeExeption {
-        if (s.toLowerCase().equals(new StringBuilder(s).reverse().toString().toLowerCase())) {
+        if (s.equalsIgnoreCase(new StringBuilder(s).reverse().toString())/*.toLowerCase().equals(new StringBuilder(s).reverse().toString().toLowerCase())*/) {
             System.out.println("***** The word you entered is palindrome *****");
         } else {
             throw new NonPalindromeExeption("!!!! You word is not palindrome !!!!");
@@ -31,6 +34,15 @@ class Server {
         } else {
             System.out.println("***** You entered correct number. It is less than one hundred. ******");
         }
+    }
+
+    Object randomObject() {
+        Random random = new Random();
+        List<Object> objectList = new ArrayList<>();
+        objectList.add(new Object());
+        objectList.add(null);
+
+        return objectList.get(random.nextInt(objectList.size()));
     }
 
     void objectIsNull(Object o) throws NullObjectExeption {
